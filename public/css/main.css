@@ -1,0 +1,8 @@
+li{
+    list-style-type: none;
+}
+
+#all-projects li{
+    font-size: 30px;
+    margin-top: 10px;
+}
