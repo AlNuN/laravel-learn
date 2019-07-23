@@ -19,15 +19,7 @@
         <textarea id="description" class="form-control {{ $errors->has('description') ? 'border-danger' : '' }}" 
         name="description" placeholder="description" required >{{ old('description') }}</textarea>
     </div>
-    @if($errors->any())
-        <div class="text-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('errors')
     <button class="btn btn-primary" type="submit">Enviar</button>
 
 </form>

@@ -11,4 +11,9 @@
 |
 */
 
-Route::resource('/projects', 'ProjectsController');
+Route::resource('/projects', 'ProjectsController');  // Laravel preset routes
+
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');  // Add new task
+
+Route::patch('/tasks/{task}', 'ProjectTasksController@update');  // Controls if a task is completed
+

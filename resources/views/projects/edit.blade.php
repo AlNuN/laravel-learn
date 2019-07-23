@@ -22,15 +22,7 @@
         name="description" required>{{ $errors->has('description') ? old('description') : $project->description }}</textarea>
     </div>
 
-    @if($errors->any())
-        <div class="text-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('errors')
 
     <button class="btn btn-primary" type="submit">Enviar</button>
 
