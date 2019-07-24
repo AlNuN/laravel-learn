@@ -14,6 +14,7 @@
 Route::resource('/projects', 'ProjectsController');  // Laravel preset routes
 
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');  // Add new task
+Route::post('completed-tasks/{task}', 'CompletedTasksController@store');  // Mark a task as completed
+Route::delete('completed-tasks/{task}', 'CompletedTasksController@destroy');  // Mark a task as not completed
 
-Route::patch('/tasks/{task}', 'ProjectTasksController@update');  // Controls if a task is completed
 

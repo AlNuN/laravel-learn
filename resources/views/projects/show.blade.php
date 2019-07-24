@@ -19,9 +19,11 @@
         </div>
         <div class="card-body">
             @foreach($project->tasks as $task)
-                <form method="POST" action="/tasks/{{ $task->id }}">
+                <form method="POST" action="/completed-tasks/{{ $task->id }}">
+                @if( $task->completed )
+                    @method('DELETE')
+                @endif
                 @csrf
-                @method('PATCH')
                     <input name="completed" type="checkbox" onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }} >
                     <span class="{{ $task->completed ? 'is-complete' : '' }}">{{ $task->description }}</span>
                 </form>
