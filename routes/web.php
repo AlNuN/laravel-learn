@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Services\Twitter;
+
+
+Route::get('/', function (Twitter $twitter){
+    dd($twitter);
+});
 
 Route::resource('/projects', 'ProjectsController');  // Laravel preset routes
 

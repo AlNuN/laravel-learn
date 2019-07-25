@@ -44,4 +44,9 @@ return [
         ],
     ],
 
+    'twitter' => [
+        'key' => env('TWITTER_KEY', 'default'),  // Access .env TWITTER_PUBLIC value or the default value
+        'secret' => env('TWITTER_SECRET'),
+    ],
+
 ];
