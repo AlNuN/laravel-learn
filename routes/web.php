@@ -24,3 +24,7 @@ Route::post('completed-tasks/{task}', 'CompletedTasksController@store');  // Mar
 Route::delete('completed-tasks/{task}', 'CompletedTasksController@destroy');  // Mark a task as not completed
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

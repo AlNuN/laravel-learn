@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+
+    public function __construct() {
+
+        $this->middleware('auth');  // all routes that pass through this controller needs autentication
+        $this->middleware('can:update,project')->except('index', 'create', 'store');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-        $projects = Project::all();
+        $projects = Project::where('owner_id', auth()->id())->get();
         return view('projects.index', compact('projects'));
     }
 
@@ -39,11 +47,17 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         //
-        Project::create(request()->validate([
+        $attributes = request()->validate([
             'title' => ['required', 'min:3', 'max:255'], 
             'description' => ['required', 'min:3', 'max:2000']
-            ]));
-        return redirect('projects');
+            ]);
+
+        $attributes['owner_id'] = auth()->id();  // agora tem que preencher esse campo também
+
+        Project::create($attributes);
+
+        return redirect('/projects');
+
     }
 
     /**
@@ -55,6 +69,7 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         //
+        $this->authorize('update', $project);
         return view('projects.show', compact('project'));
     }
 
