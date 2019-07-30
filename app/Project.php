@@ -2,12 +2,34 @@
 
 namespace App;
 
+use App\Mail\ProjectCreated;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
     //
     protected $guarded = [];
+
+    protected static function boot(){
+
+        // The Eloquent model has a function called boot, so we have to call it too
+        parent::boot();
+
+        // This method will trigger when a new project is created and inserted in the db
+        static::created(function ($project){
+            Mail::to($project->owner->email)->send(
+                new ProjectCreated($project)
+            );
+        });
+    }
+
+    // Relationship with User
+    public function owner () {
+
+        return $this->belongsTo(User::class);
+
+    }
 
 
     // Relationship with Task Model
