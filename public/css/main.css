@@ -10,3 +10,7 @@ li{
 .is-complete{
     text-decoration: line-through;
 }
+
+main{
+    min-height: 480px;
+}
