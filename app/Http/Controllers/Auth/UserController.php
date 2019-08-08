@@ -48,7 +48,6 @@ class UserController extends Controller
                 $user->save();
                 return redirect('/user')->with('status', 'Your e-mail was successfully changed!');
             }
-            // dd($attributes)->withErrors($attributes, 'email');
         }
 
 

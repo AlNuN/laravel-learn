@@ -59,7 +59,7 @@ class ProjectsController extends Controller
 
         event(new ProjectCreated($project));
 
-        return redirect('/projects');
+        return redirect('/projects')->with('status', 'Your project has been successfully created');
 
     }
 
@@ -100,7 +100,7 @@ class ProjectsController extends Controller
         //
 
         $project->update($this->validateProject());
-        return redirect('projects');
+        return redirect('projects')->with('status', 'Project successfully updated');
 
     }
 
@@ -114,7 +114,7 @@ class ProjectsController extends Controller
     {
         //
         $project->delete();
-        return redirect('projects');
+        return redirect('projects')->with('status', 'Project successfully removed');;
     }
 
     public function validateProject(){

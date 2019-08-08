@@ -19,7 +19,7 @@ class ProjectTasksController extends Controller
 
         );
 
-        return back();
+        return back()->with('status', 'Task created');
 
     }
 }
