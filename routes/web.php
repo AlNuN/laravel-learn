@@ -27,3 +27,4 @@ Route::get('/user', 'Auth\UserController@index');
 
 Route::patch('/user/{user}', 'Auth\UserController@update');
 
+Route::get('/vue', 'VueController@index');
